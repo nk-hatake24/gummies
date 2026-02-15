@@ -7,7 +7,7 @@ export const apiVersion =
 // )
 
 export const dataset = assertValue( 
-  'production',
+  'production-gummies',
   'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET'
 )
 
