@@ -19,7 +19,7 @@ export default function AgePolicyPage() {
               Legal Compliance & Age Policy
             </h1>
             <p className="text-xl text-muted-foreground">
-              Mandatory 21+ Policy, PACT Act Compliance, and State Restrictions.
+              Mandatory 21+ Policy, PACT Act Compliance, and State Restrictions.any
             </p>
           </div>
 
