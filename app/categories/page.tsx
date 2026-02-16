@@ -1,86 +1,76 @@
 // app/categories/page.tsx
 import type { Metadata } from "next"
+import Script from "next/script"
+import PageWrapper from "@/components/shared/page-wrapper"
 import { CategoriesGrid } from "@/components/categories/catergories-grid"
 import { Breadcrumbs } from "@/components/shared/breadcrumbs"
-import  PageWrapper  from "@/components/shared/page-wrapper"
 import { CategoryComparison } from "@/components/categories/CategoriesComparison"
-import { getAllCategories, getComparisonTable, getSiteConfig } from "@/lib/sanity-data" // On réutilise ton fetcher optimisé
-import Script from "next/script"
+import { getAllCategories, getComparisonTable, getSiteConfig } from "@/lib/sanity-data"
 
-// ==========================================
-// 1. GÉNÉRATION DES MÉTADONNÉES (Serveur)
-// ==========================================
 export async function generateMetadata(): Promise<Metadata> {
   const { siteConfig } = await getSiteConfig()
-  const siteName = siteConfig?.name || "BULK VAPES"
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL!
+  const siteName = siteConfig?.name || "GUMMIESSHOP"
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || siteConfig?.url || "https://gummiesshop.us").replace(/\/$/, "")
+
+  const title = "Gummies Categories | THC & CBD Gummies Directory | GUMMIESSHOP"
+  const description =
+    "Browse gummies categories including THC & CBD gummies and related collections. Retail and wholesale options available for eligible buyers."
 
   return {
-    title: "Wholesale Vape Categories | Bulk Disposable, THC & CBD Vapes",
-    description:
-      "Browse wholesale vape categories including disposable vapes, nicotine, THC, CBD & THCA products. Bulk supply for retailers and distributors.",
-
-    alternates: {
-      canonical: `${baseUrl}/categories`,
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-
+    title,
+    description,
+    alternates: { canonical: `${baseUrl}/categories` },
+    robots: { index: true, follow: true },
     openGraph: {
       type: "website",
       url: `${baseUrl}/categories`,
-      title: "Wholesale Vape Categories | Bulk Disposable, THC & CBD Vapes",
-      description:
-        "Explore bulk vape categories for wholesale buyers and distributors.",
+      title,
+      description,
       siteName,
     },
-
     twitter: {
       card: "summary_large_image",
-      title: "Wholesale Vape Categories | BULK VAPES",
-      description:
-        "Bulk disposable, THC & CBD vape categories for wholesale buyers.",
+      title,
+      description,
     },
   }
 }
 
 export default async function CategoriesPage() {
-  // 1. FETCH DES DONNÉES SANITY
-   const [categories, comparisonData] = await Promise.all([
-    getAllCategories(),
-    getComparisonTable()
-  ]);
-  
+  const [categories, comparisonData] = await Promise.all([getAllCategories(), getComparisonTable()])
 
-  // 2. SCHEMA JSON-LD DYNAMIQUE (SEO CRITIQUE)
-  // On map les vraies catégories Sanity dans le schema Google
-  const itemListElement = categories.map((cat: any, index: number) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "url": `${process.env.NEXT_PUBLIC_SITE_URL}/category/${cat.slug}`,
-    "name": cat.name
-  }));
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://gummiesshop.us").replace(/\/$/, "")
+
+  const itemListElement = categories
+    .map((cat: any, index: number) => {
+      const catSlug = typeof cat.slug === "string" ? cat.slug : cat.slug?.current
+      if (!catSlug) return null
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${baseUrl}/category/${catSlug}`,
+        name: cat.name,
+      }
+    })
+    .filter(Boolean)
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "All Categories",
-    "description": "Directory of all vape product categories available for wholesale.",
-    "url": `${process.env.NEXT_PUBLIC_SITE_URL}/categories`,
-    "breadcrumb": {
+    name: "All Categories",
+    description: "Directory of all gummies categories available on GUMMIESSHOP.",
+    url: `${baseUrl}/categories`,
+    breadcrumb: {
       "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${process.env.NEXT_PUBLIC_SITE_URL}` },
-        { "@type": "ListItem", "position": 2, "name": "Categories", "item": `${process.env.NEXT_PUBLIC_SITE_URL}/categories` }
-      ]
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${baseUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Categories", item: `${baseUrl}/categories` },
+      ],
     },
-    "mainEntity": {
+    mainEntity: {
       "@type": "ItemList",
-      "itemListElement": itemListElement // <--- C'est ici que c'est dynamique maintenant
-    }
+      itemListElement,
+    },
   }
 
   return (
@@ -88,6 +78,7 @@ export default async function CategoriesPage() {
       <Script
         id="categories-schema"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
@@ -98,12 +89,10 @@ export default async function CategoriesPage() {
             { label: "Categories", href: "/categories" },
           ]}
         />
-        
-        {/* Tu devras modifier CategoriesGrid pour accepter "categories={categories}" comme prop, 
-            exactement comme on a fait pour CategoryShowcase */}
-        <CategoriesGrid categories={categories} /> 
-     
+
+        <CategoriesGrid categories={categories} />
       </section>
+
       <CategoryComparison data={comparisonData} />
     </PageWrapper>
   )

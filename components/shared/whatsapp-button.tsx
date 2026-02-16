@@ -28,7 +28,7 @@ export function WhatsAppButton() {
     })
   }, [isVisible])
 
-  const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}?text=Hi, I have a question about BULK VAPES products.`
+  const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}?text=Hi, I have a question about ${siteConfig.name} products.`
 
   const handleClick = () => {
     analyticsEvents.whatsAppClick()

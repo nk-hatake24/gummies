@@ -1,13 +1,14 @@
 // app/wholesale/page.tsx
+import type { Metadata } from "next"
+import Script from "next/script"
 import PageWrapper from "@/components/shared/page-wrapper"
 import WholesaleContent from "./page.client"
 import { getWholesalePageData } from "@/lib/sanity-wholesalepage"
-import type { Metadata } from "next"  
 
 export const metadata: Metadata = {
-  title: "Vape Wholesale USA | Bulk Vape Distributor | BULK VAPES",
+  title: "Gummies Wholesale USA | Bulk THC & CBD Gummies Distributor | GUMMIESSHOP",
   description:
-    "Leading vape wholesale distributor in the USA. Bulk pricing, low MOQ, fast shipping, and long-term supply solutions for retailers and commercial buyers.",
+    "Wholesale gummies distributor in the USA. Bulk pricing, low MOQ, fast fulfillment, and reliable supply for retailers and commercial buyers.",
 
   alternates: {
     canonical: "/wholesale",
@@ -20,46 +21,54 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    title: "Vape Wholesale USA | BULK VAPES Distributor",
+    title: "Gummies Wholesale USA | GUMMIESSHOP Distributor",
     description:
-      "Bulk vape supply for retailers. Competitive pricing, reliable fulfillment, and scalable wholesale solutions.",
+      "Bulk THC & CBD gummies supply for retailers. Competitive pricing, reliable fulfillment, and scalable wholesale solutions.",
     url: "/wholesale",
-    siteName: "BULK VAPES",
+    siteName: "GUMMIESSHOP",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Vape Wholesale USA | BULK VAPES",
+    title: "Gummies Wholesale USA | GUMMIESSHOP",
     description:
-      "Wholesale vape distributor offering bulk pricing and commercial supply solutions.",
+      "Wholesale gummies distributor offering bulk pricing and commercial supply solutions.",
   },
 }
 
 export default async function WholesalePage() {
-  <script type="application/ld+json">
-{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WholesaleStore",
-  name: "BULK VAPES",
-  url: "https://bulkvapes.us/wholesale",
-  description:
-    "Wholesale vape distributor serving retailers and commercial buyers across the USA.",
-  areaServed: "US",
-  makesOffer: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    priceCurrency: "USD"
-  }
-})}
-</script>
-
-  // Récupération des données depuis Sanity (Page + FAQ)
+  // Fetch from Sanity (page + FAQ etc.)
   const wholesaleData = await getWholesalePageData()
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gummiesshop.us"
+  const pageUrl = `${siteUrl.replace(/\/$/, "")}/wholesale`
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    name: "GUMMIESSHOP",
+    url: pageUrl,
+    description:
+      "Wholesale gummies distributor serving retailers and commercial buyers across the USA.",
+    areaServed: "US",
+    makesOffer: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "USD",
+    },
+  }
 
   return (
     <PageWrapper>
-       {/* On passe toutes les données au composant Client */}
-       <WholesaleContent data={wholesaleData} />
+      <Script
+        id="wholesale-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* Pass all data to client component */}
+      <WholesaleContent data={wholesaleData} />
     </PageWrapper>
   )
 }

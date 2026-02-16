@@ -1,69 +1,86 @@
-import { Box, Droplets, Smartphone, CheckCircle2, TrendingUp, Layers, Zap, ShieldCheck } from "lucide-react"
+import { Box, CheckCircle2, TrendingUp, Layers, Zap, ShieldCheck } from "lucide-react"
 
 export const moqConfig = {
   header: {
-    label: "Order Requirements",
-    title: "MOQ Information",
-    description: "Understanding our minimum order quantities for wholesale pricing",
+    label: "Wholesale Requirements",
+    title: "Minimum Order Information",
+    description:
+      "Understand our wholesale minimums and ordering structure for bulk gummies.",
   },
+
   mainThreshold: {
     amount: "$500",
-    label: "Minimum Order",
-    description: "To maintain our wholesale pricing structure and ensure the best value for our partners, we require a minimum total order value of $500.00 USD. Orders below this threshold cannot be processed through our wholesale portal.",
+    label: "Minimum Wholesale Order",
+    description:
+      "To access wholesale pricing at GUMMIESSHOP, a minimum total order value of $500.00 USD is required. This allows us to maintain competitive bulk pricing and efficient fulfillment for our retail partners.",
   },
+
   products: [
     {
-      title: "Disposable Vapes",
+      title: "THC Gummies",
       icon: Box,
       requirements: [
-        "Sold in display boxes (typically 10 units per box)",
-        "Minimum: 5 boxes per order",
-        "Mix and match flavors available",
+        "Sold in sealed retail-ready packs",
+        "Minimum: 10 packs per SKU",
+        "Mix and match flavors and strengths available",
       ],
     },
+
     {
-      title: "E-Liquids",
-      icon: Droplets,
+      title: "CBD Gummies",
+      icon: Box,
       requirements: [
-        "Minimum: 20 bottles per order",
-        "Can mix flavors and nicotine strengths",
-        "Available in 30ml, 60ml, and 100ml sizes",
+        "Minimum: 20 packs per order",
+        "Can mix strengths and formulations",
+        "Retail-ready compliant packaging",
       ],
     },
+
     {
-      title: "Hardware & Kits",
-      icon: Smartphone,
+      title: "Functional Gummies",
+      icon: Box,
       requirements: [
-        "Minimum: 5 kits per order",
-        "Includes mods, pod systems, and starter kits",
-        "Replacement coils and pods available",
+        "Minimum: 15 packs per SKU",
+        "Includes sleep, wellness, and specialty blends",
+        "Bulk pricing tiers available",
       ],
     },
   ],
+
   samples: {
     title: "Sample Orders Available",
-    description: "We understand the need to test products before committing to larger orders. Sample orders below the MOQ can be arranged by contacting your account manager directly.",
-    features: ["Retail Pricing Applies", "Contact Account Manager", "Limited Quantities"],
+    description:
+      "We understand that retailers may want to evaluate products before committing to full wholesale quantities. Limited sample orders below MOQ may be arranged upon request.",
+    features: [
+      "Retail Pricing Applies",
+      "Limited Quantities",
+      "Contact Sales Team",
+    ],
   },
+
   benefits: [
     {
-      title: "Better Margins",
-      description: "Wholesale pricing ensures maximum profitability for your business",
+      title: "Improved Profit Margins",
+      description:
+        "Wholesale pricing helps maximize resale profitability.",
       icon: TrendingUp,
     },
     {
-      title: "Inventory Variety",
-      description: "Mix and match products to build a diverse inventory",
+      title: "Product Variety",
+      description:
+        "Mix multiple flavors, strengths, and categories within your order.",
       icon: Layers,
     },
     {
-      title: "Fast Processing",
-      description: "Streamlined fulfillment for orders meeting MOQ requirements",
+      title: "Efficient Fulfillment",
+      description:
+        "Orders meeting MOQ are processed quickly and securely.",
       icon: Zap,
     },
     {
-      title: "Quality Assurance",
-      description: "All products are 100% authentic and verified",
+      title: "Quality Control",
+      description:
+        "Products are sourced with strict quality standards and verified documentation.",
       icon: ShieldCheck,
     },
   ],

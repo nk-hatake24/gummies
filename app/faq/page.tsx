@@ -1,45 +1,65 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
+import Script from "next/script"
 import { FAQPageContent } from "@/components/faq/faq"
-import PageWrapper  from "@/components/shared/page-wrapper"
+import PageWrapper from "@/components/shared/page-wrapper"
 import { getFAQPageData } from "@/lib/sanity-data"
 
-// 1. Métadonnées classiques
 export const metadata: Metadata = {
-  title: "FAQ - Wholesale Center | Your Brand Name",
-  description: "Find answers about wholesale orders, crypto payments, shipping, and authenticity guarantees.",
+  title: "FAQ | GUMMIESSHOP Help Center",
+  description:
+    "Find answers about gummies orders, wholesale inquiries, shipping, payments (including crypto where available), and general store policies.",
+  alternates: {
+    canonical: "/faq",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    title: "FAQ | GUMMIESSHOP Help Center",
+    description:
+      "Answers about gummies orders, wholesale inquiries, shipping, payments, and general store policies.",
+    url: "/faq",
+    siteName: "GUMMIESSHOP",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ | GUMMIESSHOP Help Center",
+    description:
+      "Answers about gummies orders, wholesale inquiries, shipping, payments, and general store policies.",
+  },
 }
 
 export default async function FAQPage() {
   const categories = await getFAQPageData()
-  // 2. Génération dynamique du schéma JSON-LD pour Google
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": categories.flatMap((cat) => cat.items.map((item) => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer,
-      },
-    }))),
+    mainEntity: categories.flatMap((cat: any) =>
+      (cat.items || []).map((item: any) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    ),
   }
 
   return (
-    <>
-      {/* 3. Injection du script pour les moteurs de recherche */}
-      <script
+    <PageWrapper>
+      <Script
+        id="faq-jsonld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      <PageWrapper>
-       
-        <FAQPageContent categories={categories} />
-       
-        
-        {/* Tu peux ajouter d'autres sections ici, comme le Contact Form */}
-      </PageWrapper>
-    </>
+
+      <FAQPageContent categories={categories} />
+      {/* Optional: add contact form / CTA here */}
+    </PageWrapper>
   )
 }

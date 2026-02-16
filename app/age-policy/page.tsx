@@ -4,7 +4,8 @@ import PageWrapper from "@/components/shared/page-wrapper"
 
 export const metadata: Metadata = {
   title: "Age Policy, Legal Compliance & Disclaimers",
-  description: "Official 21+ age restriction policy, PACT Act compliance, and legal disclaimers for Nicotine and Hemp products.",
+  description:
+    "Official 21+ age restriction policy, hemp-derived cannabinoid compliance, and legal disclaimers for GUMMIESSHOP.",
 }
 
 export default function AgePolicyPage() {
@@ -13,85 +14,168 @@ export default function AgePolicyPage() {
       <main className="min-h-screen pt-24 lg:pt-28 bg-white dark:bg-neutral-950">
         <article className="max-w-4xl mx-auto px-6 lg:px-12 py-16 lg:py-24">
           
-          {/* Header */}
           <div className="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-            <h1 className="font-serif text-4xl md:text-5xl tracking-tight mb-4 text-gray-900 dark:text-gray-50">
+            <h1 className="font-serif text-4xl md:text-5xl tracking-tight mb-4">
               Legal Compliance & Age Policy
             </h1>
             <p className="text-xl text-muted-foreground">
-              Mandatory 21+ Policy, PACT Act Compliance, and State Restrictions.any
+              Federal Hemp Law, FDA Positioning, and 21+ Sales Policy
             </p>
           </div>
 
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            
-            {/* 1. Federal 21+ Mandate */}
+
+            {/* 1. 21+ Policy */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                1. Federal Minimum Age Requirement (21+)
-              </h2>
-              <p className="leading-relaxed mb-4 text-gray-600 dark:text-gray-300">
-                In strict compliance with the <strong>Federal Food, Drug, and Cosmetic Act (FD&C Act)</strong> and the "Tobacco 21" legislation signed into law on December 20, 2019, the sale of all tobacco and vaping products is restricted to individuals aged <strong>21 years or older</strong>.
+              <h2>1. 21+ Age Restriction Policy</h2>
+              <p>
+                GUMMIESSHOP restricts the sale of hemp-derived cannabinoid products to individuals
+                aged <strong>21 years or older</strong>. While federal hemp law does not mandate
+                a nationwide minimum age for CBD products, many states impose age
+                restrictions. To ensure responsible retail practices and compliance across
+                jurisdictions, we enforce a strict 21+ policy.
               </p>
-              <div className="bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 p-4 my-4">
-                <p className="text-sm text-amber-800 dark:text-amber-400 font-medium">
-                  <strong>Verification Required:</strong> We utilize third-party age verification services (e.g., BlueCheck/AgeChecker) to validate your identity. Falsifying your age to purchase strict-regulated products is illegal.
-                </p>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Source: <Link href="https://www.fda.gov/tobacco-products/retail-sales-tobacco-products/tobacco-21" className="underline hover:text-blue-600" target="_blank">FDA Tobacco 21 Policy</Link>
+
+              <p className="text-sm">
+                Source:{" "}
+                <Link href="https://www.congress.gov/115/plaws/publ334/PLAW-115publ334.pdf" target="_blank">
+                  Agriculture Improvement Act of 2018 (2018 Farm Bill)
+                </Link>
               </p>
             </section>
 
-            {/* 2. Hemp & Farm Bill */}
+            {/* 2. Federal Hemp Compliance */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                2. Hemp-Derived Cannabinoids (THCA, CBD)
-              </h2>
-              <p className="leading-relaxed mb-4 text-gray-600 dark:text-gray-300">
-                Products listed as "Hemp-Derived" are compliant with the <strong>Agriculture Improvement Act of 2018 (The 2018 Farm Bill)</strong>, containing less than 0.3% Delta-9 THC on a dry weight basis.
+              <h2>2. Hemp-Derived Cannabinoid Compliance</h2>
+              <p>
+                All products marketed as hemp-derived comply with the federal definition
+                of hemp under the <strong>2018 Farm Bill</strong>, meaning they contain no more
+                than 0.3% Delta-9 THC on a dry weight basis.
               </p>
-              <h3 className="text-lg font-medium mt-6 mb-2">State Law Preemption</h3>
-              <p className="leading-relaxed mb-4 text-gray-600 dark:text-gray-300">
-                While federally legal, specific states (including but not limited to Idaho, Oregon, and Utah) have regulations that may classify THCA or other isomers as controlled substances. <strong>We do not ship products to states where they are explicitly banned.</strong> It is the customer's responsibility to know their local laws.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Source: <Link href="https://www.ams.usda.gov/rules-regulations/hemp" className="underline hover:text-blue-600" target="_blank">USDA Hemp Production Program</Link>
+
+              <p className="text-sm">
+                Sources:
+                <br />
+                <Link href="https://www.ams.usda.gov/rules-regulations/hemp" target="_blank">
+                  USDA Hemp Production Program
+                </Link>
+                <br />
+                <Link href="https://www.fda.gov/food/food-additives-petitions/cannabidiol-cbd" target="_blank">
+                  FDA – Cannabis and Cannabis-Derived Products
+                </Link>
               </p>
             </section>
 
-            {/* 3. PACT Act & Shipping */}
+            {/* 3. FDA Regulatory Position */}
             <section className="mb-12">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-                3. PACT Act & Shipping Restrictions
-              </h2>
-              <p className="leading-relaxed mb-4 text-gray-600 dark:text-gray-300">
-                In compliance with the <strong>Prevent All Cigarette Trafficking (PACT) Act</strong> and the <em>Preventing Online Sales of E-Cigarettes to Children Act</em>:
+              <h2>3. FDA Regulatory Position on CBD & Cannabinoids</h2>
+              <p>
+                The U.S. Food and Drug Administration (FDA) regulates foods,
+                dietary supplements, and drug products under the Federal Food,
+                Drug, and Cosmetic Act (FD&C Act). The FDA has stated that CBD
+                cannot currently be marketed as a dietary supplement unless
+                approved through appropriate regulatory pathways.
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
-                <li>We cannot ship vape products via USPS (United States Postal Service).</li>
-                <li><strong>Adult Signature Required:</strong> All shipments containing vape or hemp products require an adult (21+) signature upon delivery. Packages cannot be left at the door.</li>
-                <li>We report all sales to relevant state tax administrators as required by law.</li>
-              </ul>
-              <p className="text-sm text-muted-foreground mt-4">
-                Source: <Link href="https://www.atf.gov/alcohol-tobacco/preventing-online-sales-e-cigarettes-children-act" className="underline hover:text-blue-600" target="_blank">ATF PACT Act Guidance</Link>
+
+              <p className="text-sm">
+                Sources:
+                <br />
+                <Link href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cannabis-and-cannabis-derived-products-quality-considerations-clinical-research" target="_blank">
+                  FDA Cannabis Guidance
+                </Link>
+                <br />
+                <Link href="https://www.fda.gov/food/cfsan-constituent-updates/fda-approves-first-drug-comprised-active-ingredient-derived-marijuana-treat-rare-severe-forms" target="_blank">
+                  FDA – Epidiolex Approval Notice
+                </Link>
               </p>
             </section>
 
-            {/* 4. Prop 65 (California) */}
+            {/* 4. State Law Variations */}
+            <section className="mb-12">
+              <h2>4. State Law Variations</h2>
+              <p>
+                While hemp-derived cannabinoids may be federally lawful under
+                certain conditions, individual states may impose restrictions or
+                bans on specific cannabinoids (e.g., Delta-8, THCA).
+                Customers are responsible for understanding their local laws.
+              </p>
+
+              <p className="text-sm">
+                Sources:
+                <br />
+                <Link href="https://www.dea.gov/drug-information/csa" target="_blank">
+                  DEA Controlled Substances Act Overview
+                </Link>
+                <br />
+                <Link href="https://norml.org/laws/" target="_blank">
+                  NORML State Law Database
+                </Link>
+              </p>
+            </section>
+
+            {/* 5. Shipping & Interstate Commerce */}
+            <section className="mb-12">
+              <h2>5. Interstate Commerce & Shipping</h2>
+              <p>
+                Under federal law, hemp and hemp-derived products that meet the
+                0.3% Delta-9 THC threshold may move in interstate commerce.
+                We reserve the right to restrict shipments to states with
+                specific prohibitions.
+              </p>
+
+              <p className="text-sm">
+                Source:
+                <br />
+                <Link href="https://www.congress.gov/115/plaws/publ334/PLAW-115publ334.pdf" target="_blank">
+                  Section 10114 – Interstate Commerce (Farm Bill)
+                </Link>
+              </p>
+            </section>
+
+            {/* 6. California Prop 65 */}
             <section className="mb-12 bg-gray-50 dark:bg-neutral-900 p-6 rounded-lg">
-              <h2 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
-                4. California Proposition 65 Warning
-              </h2>
-              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                <strong>WARNING:</strong> This product can expose you to chemicals including nicotine (which is known to the State of California to cause birth defects or other reproductive harm) and cannabis smoke (which is known to the State of California to cause cancer). For more information, go to <Link href="https://www.p65warnings.ca.gov" className="underline text-blue-600" target="_blank">www.P65Warnings.ca.gov</Link>.
+              <h2>6. California Proposition 65</h2>
+              <p>
+                Products sold in California may require warnings pursuant to
+                California Health & Safety Code §25249.6.
+              </p>
+              <p className="text-sm">
+                Source:
+                <br />
+                <Link href="https://www.p65warnings.ca.gov" target="_blank">
+                  California Proposition 65 Official Website
+                </Link>
               </p>
             </section>
 
-            {/* 5. FDA Disclaimer */}
-            <section className="border-t border-gray-200 dark:border-gray-800 pt-8">
-              <p className="text-xs text-muted-foreground italic">
-                <strong>FDA Disclaimer:</strong> The statements made regarding these products have not been evaluated by the Food and Drug Administration. The efficacy of these products has not been confirmed by FDA-approved research. These products are not intended to diagnose, treat, cure, or prevent any disease. All information presented here is not meant as a substitute for or alternative to information from healthcare practitioners. Please consult your healthcare professional about potential interactions or other possible complications before using any product.
+            {/* 7. CDC & Public Health */}
+            <section className="mb-12">
+              <h2>7. Public Health Information</h2>
+              <p>
+                Consumers seeking general health guidance related to cannabis
+                products may consult official public health resources.
+              </p>
+
+              <p className="text-sm">
+                Sources:
+                <br />
+                <Link href="https://www.cdc.gov/marijuana/index.htm" target="_blank">
+                  CDC – Marijuana & Public Health
+                </Link>
+                <br />
+                <Link href="https://nida.nih.gov/publications/drugfacts/cannabis-marijuana" target="_blank">
+                  National Institute on Drug Abuse (NIDA)
+                </Link>
+              </p>
+            </section>
+
+            {/* FDA Disclaimer */}
+            <section className="border-t pt-8">
+              <p className="text-xs italic text-muted-foreground">
+                FDA Disclaimer: Statements regarding these products have not
+                been evaluated by the Food and Drug Administration. These
+                products are not intended to diagnose, treat, cure, or prevent
+                any disease.
               </p>
             </section>
 

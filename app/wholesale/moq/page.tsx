@@ -1,62 +1,79 @@
+// app/wholesale/moq/page.tsx  (ou app/wholesale/moq/page.tsx selon ton routing)
 import type { Metadata } from "next"
+import Script from "next/script"
+import PageWrapper from "@/components/shared/page-wrapper"
 import { MoqPageContent } from "@/components/wholesale/moq-content"
 import { siteConfig } from "@/config/site.config"
-import  PageWrapper  from "@/components/shared/page-wrapper"
 
-// 1. SEO Metadata Optimisée
 export const metadata: Metadata = {
-  title: "Wholesale MOQ Requirements | Minimum Order Quantity",
-  description: "Learn about our $500 Minimum Order Quantity (MOQ) for wholesale vape products. Mix and match disposables, e-liquids, and hardware.",
+  title: "Wholesale MOQ Requirements | Minimum Order Quantity | GUMMIESSHOP",
+  description:
+    "Learn about our $500 Minimum Order Quantity (MOQ) for wholesale gummies. Mix and match eligible products to meet the minimum order value.",
+  alternates: {
+    canonical: "/wholesale/moq",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: "Wholesale MOQ Requirements | BULK VAPES",
-    description: "Wholesale pricing requires a $500 minimum order. Find out details on product-specific minimums for disposables and e-liquids.",
+    title: "Wholesale MOQ Requirements | GUMMIESSHOP",
+    description:
+      "Wholesale pricing requires a $500 minimum order. See how minimums work and how to mix eligible products to meet MOQ.",
     type: "website",
+    url: "/wholesale/moq",
+    siteName: "GUMMIESSHOP",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wholesale MOQ Requirements | GUMMIESSHOP",
+    description:
+      "Wholesale gummies pricing requires a $500 minimum order. Learn how MOQ works for wholesale accounts.",
   },
 }
 
 export default function MoqPage() {
-  
-  // 2. SEO Schema.org (JSON-LD)
-  // Cela explique aux moteurs de recherche qu'il s'agit d'une page de conditions commerciales
+  const siteUrl = siteConfig.url || process.env.NEXT_PUBLIC_SITE_URL || "https://gummiesshop.us"
+  const pageUrl = `${siteUrl.replace(/\/$/, "")}/wholesale/moq`
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Wholesale MOQ Requirements",
-    "description": "Details regarding minimum order quantities for wholesale accounts.",
-    "mainEntity": {
+    name: "Wholesale MOQ Requirements",
+    description: "Details regarding minimum order quantities for wholesale accounts.",
+    url: pageUrl,
+    mainEntity: {
       "@type": "Offer",
-      "itemOffered": {
+      itemOffered: {
         "@type": "Service",
-        "name": "Wholesale Distribution"
+        name: "Wholesale Gummies Distribution",
       },
-      "priceSpecification": {
+      priceSpecification: {
         "@type": "PriceSpecification",
-        "price": "500.00",
-        "priceCurrency": "USD",
-        "minPrice": "500.00",
-        "description": "Minimum order value required to access wholesale pricing."
-      }
+        price: "500.00",
+        priceCurrency: "USD",
+        minPrice: "500.00",
+        description: "Minimum order value required to access wholesale pricing.",
+      },
+      availability: "https://schema.org/InStock",
     },
-    "provider": {
+    provider: {
       "@type": "Organization",
-      "name": siteConfig.name,
-      "url": siteConfig.url
-    }
+      name: siteConfig.name || "GUMMIESSHOP",
+      url: siteUrl,
+    },
   }
 
   return (
-    <>
-      <script
+    <PageWrapper>
+      <Script
+        id="moq-jsonld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      <PageWrapper
-      
-      
-      >
-        <MoqPageContent />
-      </PageWrapper>
-    </>
+
+      <MoqPageContent />
+    </PageWrapper>
   )
 }
